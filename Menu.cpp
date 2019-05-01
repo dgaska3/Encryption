@@ -14,9 +14,10 @@ void Menu::mainMenu()
 	cout << "************************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Encrypt text" << endl;
-	cout << "2-> Decrypt text" << endl;
-	cout << "3-> Exit" << endl;
+	cout << "1) Encrypt text" << endl;
+	cout << "2) Decrypt text" << endl;
+	cout << "3) Exit" << endl;
+	cout << "-> ";
 	cin >> choice1;
 	mainChoice = choice1;
 	switch (mainChoice)
@@ -42,9 +43,10 @@ void Menu::encryptMenu()
 	cout << "**********************************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Substitution Cipher" << endl;
-	cout << "2-> Transposition Cipher" << endl;
-	cout << "3-> Return to Main Menu" << endl;
+	cout << "1) Substitution Cipher" << endl;
+	cout << "2) Transposition Cipher" << endl;
+	cout << "3) Return to Main Menu" << endl;
+	cout << "-> ";
 	cin >> choice2;
 	encryptChoice = choice2;
 	switch (encryptChoice)
@@ -71,10 +73,11 @@ void Menu::decryptMenu()
 	cout << "**********************************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Substitution Cipher" << endl;
-	cout << "2-> Transposition Cipher" << endl;
-	cout << "3-> I don't know which decryption method was used" << endl;
-	cout << "4-> Return to Main Menu" << endl;
+	cout << "1) Substitution Cipher" << endl;
+	cout << "2) Transposition Cipher" << endl;
+	cout << "3) I don't know which decryption method was used" << endl;
+	cout << "4) Return to Main Menu" << endl;
+	cout << "-> ";
 	cin >> choice3;
 	decryptChoice = choice3;
 	switch (decryptChoice)
@@ -111,6 +114,7 @@ string Menu::subEncrypt(string cleartext, int shift = 0) {
 		}
 	}
 	return ciphertext;
+	superMenu();
 }
 string Menu::caesarEncrypt(string cleartext, int shift = 1) {
 
@@ -132,6 +136,7 @@ string Menu::caesarEncrypt(string cleartext, int shift = 1) {
 		}
 	}
 	return ciphertext;
+	superMenu();
 }
 void Menu::enSubMenu()
 {
@@ -145,20 +150,17 @@ void Menu::enSubMenu()
 	cout << "*************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Enter the text to be encrypted" << endl;
-	cout << "2-> Return to the Encryption Menu" << endl;
+	cout << "1) Enter the text to be encrypted" << endl;
+	cout << "2) Return to the Encryption Menu" << endl;
+	cout << "-> ";
 	cin >> choice4;
 	enSubChoice = choice4;
 	if (enSubChoice == 1)
 	{
 		string cleartext;
-		cout << "-> ";
+		cout << "Enter Clear Text" << endl;
 		getline(cin, cleartext);
-		subEncrypt(cleartext);
-
-		cout << endl;
-
-		superMenu();
+		cout << "Encrypted message: " << subEncrypt(cleartext) << endl;
 	}
 	else
 	{
@@ -177,20 +179,17 @@ void Menu::enCaeMenu()
 	cout << "*************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Enter the text to be encrypted" << endl;
-	cout << "2-> Return to the Encryption Menu" << endl;
+	cout << "1) Enter the text to be encrypted" << endl;
+	cout << "2) Return to the Encryption Menu" << endl;
+	cout << "-> ";
 	cin >> choice5;
 	enCaeChoice = choice5;
 	if (enCaeChoice == 1)
 	{
 		string cleartext;
-		cout << "-> ";
+		cout << "Enter Clear Text" << endl;
 		getline(cin, cleartext);
-		caesarEncrypt(cleartext);
-
-		cout << endl;
-
-		superMenu();
+		cout << "Encrypted message: " << caesarEncrypt(cleartext) << endl;
 	}
 	else
 	{
@@ -218,6 +217,7 @@ string Menu::subDecrypt(string cleartext, int shift = 0) {
 		}
 	}
 	return ciphertext;
+	superMenu();
 }
 string Menu::caesarDecrypt(string cleartext, int shift = 1) {
 
@@ -239,6 +239,7 @@ string Menu::caesarDecrypt(string cleartext, int shift = 1) {
 		}
 	}
 	return ciphertext;
+	superMenu();
 }
 void Menu::bruteforce(string ciphertext) {
 
@@ -247,6 +248,7 @@ void Menu::bruteforce(string ciphertext) {
 		cout << left << setw(35) << caesarEncrypt(ciphertext, shift);
 		cout << subDecrypt(ciphertext, shift) << endl;
 	}
+	superMenu();
 }
 void Menu::deSubMenu()
 {
@@ -260,20 +262,17 @@ void Menu::deSubMenu()
 	cout << "*************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Enter the text to be decrypted" << endl;
-	cout << "2-> Return to the Decryption Menu" << endl;
+	cout << "1) Enter the text to be decrypted" << endl;
+	cout << "2) Return to the Decryption Menu" << endl;
+	cout << "-> ";
 	cin >> choice6;
 	deSubChoice = choice6;
 	if (deSubChoice == 1)
 	{
 		string cleartext;
-		cout << "-> ";
+		cout << "Enter Clear Text" << endl;
 		getline(cin, cleartext);
-		subDecrypt(cleartext);
-
-		cout << endl;
-
-		superMenu();
+		cout << "Decrypted message: " << subDecrypt(cleartext) << endl;
 	}
 	else
 	{
@@ -292,20 +291,17 @@ void Menu::deCaeMenu()
 	cout << "*************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Enter the text to be decrypted" << endl;
-	cout << "2-> Return to the decryption Menu" << endl;
+	cout << "1) Enter the text to be decrypted" << endl;
+	cout << "2) Return to the decryption Menu" << endl;
+	cout << "-> ";
 	cin >> choice7;
 	deCaeChoice = choice7;
 	if (deCaeChoice == 1)
 	{
 		string cleartext;
-		cout << "-> ";
+		cout << "Enter Clear Text" << endl;
 		getline(cin, cleartext);
-		caesarDecrypt(cleartext);
-
-		cout << endl;
-
-		superMenu();
+		cout << "Decrypted message: " << caesarDecrypt(cleartext) << endl;
 	}
 	else
 	{
@@ -324,21 +320,17 @@ void Menu::bfMenu()
 	cout << "*************************************" << endl;
 	cout << endl;
 
-	cout << "1-> Attempt to decrypt using a bruteforce method" << endl;
-	cout << "2-> Return to the decryption Menu" << endl;
+	cout << "1) Attempt to decrypt using a bruteforce method" << endl;
+	cout << "2) Return to the decryption Menu" << endl;
+	cout << "-> ";
 	cin >> choice8;
 	bfChoice = choice8;
 	if (bfChoice == 1)
 	{
 		string cleartext;
-		cout << "-> ";
+		cout << "Enter Clear Text" << endl;
 		getline(cin, cleartext);
 		bruteforce(cleartext);
-
-		cout << endl;
-
-		superMenu();
-
 	}
 	else
 	{
@@ -356,9 +348,10 @@ void Menu::superMenu()
 	cout << "***************************" << endl;
 	cout << endl;
 
-	cout << "1-> Encryption Menu" << endl;
-	cout << "2-> Decryption Menu" << endl;
-	cout << "3-> Main Menu" << endl;
+	cout << "1) Encryption Menu" << endl;
+	cout << "2) Decryption Menu" << endl;
+	cout << "3) Main Menu" << endl;
+	cout << "-> ";
 	cin >> choice9;
 	superChoice = choice9;
 	switch (superChoice)
